@@ -1,4 +1,4 @@
-## Viesti tehokkaasti 11.3.2021
+# Viesti tehokkaasti 11.3.2021
 
 Tälle sivulle on koottu neljä esimerkkiä miten eri avoimen lähdekoodin välineillä voidaan visualisoida [riistaonnettomuudet-tilaston](https://www.stat.fi/tup/kokeelliset-tilastot/riistaonnettomuudet/index.html) tilastotietoa
 
@@ -8,9 +8,21 @@ Tietoja on visualisoitu seuraavien välineiden avulla:
 3. R:n ggplot2-kirjasto
 4. D3js-kirjasto Javascriptillä
 
-### Markdown
+## 1. PX-Web
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+1. Valitaan riistaonnettomuudet tilaston [tietokantataulukosta](https://pxnet2.stat.fi/PXWeb/pxweb/fi/Kokeelliset_tilastot/Kokeelliset_tilastot__riista/koeti_riista_pxt_12sh.px/) kaikki maakunnat 
+
+ja vuodet 2019-2021. 
+
+Muita muuttujia ei tarvitse erikseen valita vaan muista muuttujista on esivalittuna yhteensä-arvot
+2. Valitaan esitysmuodoksi "Vaakapylväskuvio"
+3. Käännetään kuutiota kerran myötäpäivään, jotta saadaan maakunnat pystyakselille
+4. Muokataan kuvion kuvioasetuksia; asetetaan otsikko, muokataan korkeutta ja laitetaan otsikot vaakaan
+5. Tallennetaan kuvio palvelimelle tallennetuksi hauksi, jolloin se voidaan jakaa sellaisenaan. Kuvion voi myös tallentaa haluamassaan formaatissa.
+
+Edellä luotu kuvio on liitetty osaksi tätä sivustoa ja kuva luetaan tälle sivulle suoraan px-webistä.
+
+!img(https://pxnet2.stat.fi:443/PXWeb/sq/6679640d-e464-402c-a3d7-10e118e8b688)
 
 ```markdown
 Syntax highlighted code block
