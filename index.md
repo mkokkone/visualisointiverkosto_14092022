@@ -22,7 +22,7 @@ Muita muuttujia ei tarvitse erikseen valita vaan muista muuttujista on esivalitt
 
 Edellä luotu kuvio on liitetty osaksi tätä sivustoa ja kuva luetaan tälle sivulle suoraan px-webistä.
 
-!img(https://pxnet2.stat.fi:443/PXWeb/sq/6679640d-e464-402c-a3d7-10e118e8b688)
+!Image(https://pxnet2.stat.fi:443/PXWeb/sq/6679640d-e464-402c-a3d7-10e118e8b688)
 
 ```markdown
 Syntax highlighted code block
