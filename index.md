@@ -10,8 +10,8 @@ Tietoja on visualisoitu seuraavien välineiden avulla:
 
 ## 1. PX-Web
 
-1. Valitaan riistaonnettomuudet tilaston [tietokantataulukosta](https://pxnet2.stat.fi/PXWeb/pxweb/fi/Kokeelliset_tilastot/Kokeelliset_tilastot__riista/koeti_riista_pxt_12sh.px/) kaikki maakunnat 
-
+1. Valitaan riistaonnettomuudet tilaston [tietokantataulukosta] (https://pxnet2.stat.fi/PXWeb/pxweb/fi/Kokeelliset_tilastot/Kokeelliset_tilastot__riista/koeti_riista_pxt_12sh.px/) kaikki maakunnat 
+<img_src="kuvat\maakuntavalinta.png">
 ja vuodet 2019-2021. 
 
 Muita muuttujia ei tarvitse erikseen valita vaan muista muuttujista on esivalittuna yhteensä-arvot
