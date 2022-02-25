@@ -35,6 +35,38 @@ Edellä luotu kuvio on liitetty osaksi tätä sivustoa ja kuva luetaan tälle si
 
 <img src="https://pxnet2.stat.fi:443/PXWeb/sq/6679640d-e464-402c-a3d7-10e118e8b688" alt="Kuvioissa riistaonnettomuudet maakunnittain vuosina 2019-2021. Riistaonnettomuuksia tapahtui vuosittain eniten Varsinais-Suomen, Uudenmaan, Pirkanmaan, Satakunnan maakunnissa ja Kanta-Hämeen maakunnissa.">
 
+## 2. Teemakartta Qgis-karttaohjelmalla
+
+Luodaan teemakartta, jossa maakunnittainen riistaonnettomuuksien määrä on suhteutettu liikennemäärään. 
+
+1. Ladataan aineistot tilastovuodelle 2020 [riistaonnettomuuksien tietokantataulukosta](https://pxnet2.stat.fi:443/PXWeb/sq/c3064768-9ed1-4e6c-b90b-a095ea25b13b) ja [tietilaston tietokantataulukosta](https://pxnet2.stat.fi:443/PXWeb/sq/64b0f6c1-eda4-4653-a884-b8ce728f7028). Ladatessa valitaan muodoksi "Lataa puolipiste-eroteltu csv-tiedosto (otsikollinen)"
+<img src="kuvat\linkki.png">
+
+2. Muokataan csv-tiedoston otsikoita ja dataa siten että poistetaan maakuntien nimistä MK-etuliite ja lisätään koodi-muuttuja, jossa on pelkkä maakuntakoodi:
+
+Alkuperäinen:
+```
+"12jz -- Maanteiden pituus ja liikennesuorite kunnittain, 2017-2020"
+
+"Alue";"Vuosi";"Liikennesuorite"
+"MK01 Uusimaa";"2020";7657
+"MK02 Varsinais-Suomi";"2020";2960
+...
+```
+
+Muokattu:
+```
+"12jz -- Maanteiden pituus ja liikennesuorite kunnittain, 2017-2020"
+
+"Koodi";"Alue";"Tieluokka";"Päällyste";"Vuosi";"Liikennesuorite"
+"01";"Uusimaa";"Yhteensä";"Yhteensä";"2020";7657
+"02";"Varsinais-Suomi";"Yhteensä";"Yhteensä";"2020";2960
+...
+```
+
+
+
+
 ```markdown
 Syntax highlighted code block
 
