@@ -15,10 +15,21 @@ Tietoja on visualisoitu seuraavien välineiden avulla:
 ja vuodet 2019-2021. 
 <img src="kuvat\vuosivalinta.png">
 Muita muuttujia ei tarvitse erikseen valita vaan muista muuttujista on esivalittuna yhteensä-arvot
+
 2. Valitaan esitysmuodoksi "Vaakapylväskuvio"
+<img src="kuvat\vaakapylvas.png">
+
 3. Käännetään kuutiota kerran myötäpäivään, jotta saadaan maakunnat pystyakselille
+<img src="kuvat\kaanna.png">
+
 4. Muokataan kuvion kuvioasetuksia; asetetaan otsikko, muokataan korkeutta ja laitetaan otsikot vaakaan
+<img src="kuvat\kuvioasetukset.png">
+
 5. Tallennetaan kuvio palvelimelle tallennetuksi hauksi, jolloin se voidaan jakaa sellaisenaan. Kuvion voi myös tallentaa haluamassaan formaatissa.
+<img src="kuvat\tallenna_poiminta.png">
+
+6. Kopioidaan linkki talteen. Linkki osoittaa suoraan äsken luotuun png-tiedostomuotoiseen kuvioon.
+<img src="kuvat\linkki.png">
 
 Edellä luotu kuvio on liitetty osaksi tätä sivustoa ja kuva luetaan tälle sivulle suoraan px-webistä.
 
