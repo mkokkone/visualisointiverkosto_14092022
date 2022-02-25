@@ -3,10 +3,10 @@
 Tälle sivulle on koottu neljä esimerkkiä miten eri avoimen lähdekoodin välineillä voidaan visualisoida [riistaonnettomuudet-tilaston](https://www.stat.fi/tup/kokeelliset-tilastot/riistaonnettomuudet/index.html) tilastotietoa
 
 Tietoja on visualisoitu seuraavien välineiden avulla:
-*PX-Webin sisäänrakennettu kuviotyökalu
-*Teemakartta Qgis-karttaohjelmalla
-*R:n ggplot2-kirjasto
-*D3js-kirjasto Javascriptillä
+1. PX-Webin sisäänrakennettu kuviotyökalu
+2. Teemakartta Qgis-karttaohjelmalla
+3. R:n ggplot2-kirjasto
+4. D3js-kirjasto Javascriptillä
 
 ### Markdown
 
