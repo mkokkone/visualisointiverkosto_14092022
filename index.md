@@ -313,8 +313,8 @@ var dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.
 		tooltip
 		  .style("opacity", 1)
 	.html("<b>" +d.name+"</b>" + "<br> Onnettomuuksien lukumäärä: " + d.onn)	       
-		.style("left", (d3.mouse(this).attr("cx") + "px")
-		.style("top", (d3.mouse(this).attr("cy") + "px")
+		.style("left", (d3.mouse(this).attr("cx") + "px"))
+		.style("top", (d3.mouse(this).attr("cy") + "px"))
 		//.style("left", (d3.mouse(this).attr("cy") + "px"))
 		//.style("top", (d3.mouse(this)[1]+0) + "px")
 
@@ -325,8 +325,8 @@ var dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.
 		tooltip
 	    
         
-		 .style("left", (d3.mouse(this).attr("cx") + "px")
-		 .style("top", (d3.mouse(this).attr("cy") + "px")
+		 .style("left", (d3.mouse(this).attr("cx") + "px"))
+		 .style("top", (d3.mouse(this).attr("cy") + "px"))
 
 
 		  
