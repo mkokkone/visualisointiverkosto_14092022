@@ -326,7 +326,7 @@ var dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.
 	    
         
 		 .style("left", (d3.mouse(this)[0]+50) + "px")
-		 .style("top", (d3.mouse(this)[1]+500) + "px")
+		 .style("top", (d3.mouse(this)[1]+50) + "px")
 
 
 		  
