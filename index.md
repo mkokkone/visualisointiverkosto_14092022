@@ -187,7 +187,7 @@ div.tooltip {
 {id:'MK17', name: 'Pohjois-Pohjanmaa', onn:295, xk:340, yk:374 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Pohjois-Pohjanmaa tapahtui vuonna 2020 yhteensä 295 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
 {id:'MK18', name: 'Kainuu', onn:92, xk:416, yk:377 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Kainuu tapahtui vuonna 2020 yhteensä 92 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' },
 {id:'MK19', name: 'Lappi', onn:226, xk:359, yk:182 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Lappi tapahtui vuonna 2020 yhteensä 226 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' }
-![image](https://user-images.githubusercontent.com/24507843/156731793-9c63780d-cea3-47d1-a449-f5f1406dad84.png)
+
 
 							
 ];
