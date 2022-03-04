@@ -336,7 +336,7 @@ var dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.
 		tooltip
 		  .transition()
 		  .duration(200)
-		  .style("opacity", 0)
+		  .style("opacity", 1)
 	  }
 
 
