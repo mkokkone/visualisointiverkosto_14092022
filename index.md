@@ -169,24 +169,24 @@ div.tooltip {
 	height=700;
 //data
 	var data = [
-{id:'MK01', name: 'Uusimaa', onn:2982, xk:302, yk:649' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Uusimaa tapahtui vuonna 2020 yhteensä 2982 riistaonnettomuutta. Eniten kolareita aiheutti valkohäntäpeura.' },
-{id:'MK02', name: 'Varsinais-Suomi', onn:3309, xk:232, yk:630' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Varsinais-Suomi tapahtui vuonna 2020 yhteensä 3309 riistaonnettomuutta. Eniten kolareita aiheutti valkohäntäpeura.' },
-{id:'MK05', name: 'Kanta-Häme', onn:1341, xk:289, yk:614' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Kanta-Häme tapahtui vuonna 2020 yhteensä 1341 riistaonnettomuutta. Eniten kolareita aiheutti valkohäntäpeura.' },
-{id:'MK07', name: 'Päijät-Häme', onn:474, xk:330, yk:599' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Päijät-Häme tapahtui vuonna 2020 yhteensä 474 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
-{id:'MK08', name: 'Kymenlaakso', onn:165, xk:372, yk:628' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Kymenlaakso tapahtui vuonna 2020 yhteensä 165 riistaonnettomuutta. Eniten kolareita aiheutti kymenlaakso.' },
-{id:'MK09', name: 'Etelä-Karjala', onn:121, xk:412, yk:603' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Etelä-Karjala tapahtui vuonna 2020 yhteensä 121 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' },
-{id:'MK04', name: 'Satakunta', onn:1462, xk:217, yk:569' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Satakunta tapahtui vuonna 2020 yhteensä 1462 riistaonnettomuutta. Eniten kolareita aiheutti valkohäntäpeura.' },
-{id:'MK06', name: 'Pirkanmaa', onn:1732, xk:269, yk:563' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Pirkanmaa tapahtui vuonna 2020 yhteensä 1732 riistaonnettomuutta. Eniten kolareita aiheutti valkohäntäpeura.' },
-{id:'MK13', name: 'Keski-Suomi', onn:444, xk:326, yk:504' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Keski-Suomi tapahtui vuonna 2020 yhteensä 444 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
-{id:'MK14', name: 'Etelä-Pohjanmaa', onn:339, xk:255, yk:492' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Etelä-Pohjanmaa tapahtui vuonna 2020 yhteensä 339 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
-{id:'MK15', name: 'Pohjanmaa', onn:444, xk:220, yk:467' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Pohjanmaa tapahtui vuonna 2020 yhteensä 444 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
-{id:'MK10', name: 'Etelä-Savo', onn:170, xk:393, yk:561' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Etelä-Savo tapahtui vuonna 2020 yhteensä 170 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' },
-{id:'MK11', name: 'Pohjois-Savo', onn:186, xk:385, yk:470' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Pohjois-Savo tapahtui vuonna 2020 yhteensä 186 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' },
-{id:'MK12', name: 'Pohjois-Karjala', onn:134, xk:463, yk:483' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Pohjois-Karjala tapahtui vuonna 2020 yhteensä 134 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' },
-{id:'MK16', name: 'Keski-Pohjanmaa', onn:88, xk:290, yk:444' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Keski-Pohjanmaa tapahtui vuonna 2020 yhteensä 88 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
-{id:'MK17', name: 'Pohjois-Pohjanmaa', onn:295, xk:340, yk:374' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Pohjois-Pohjanmaa tapahtui vuonna 2020 yhteensä 295 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
-{id:'MK18', name: 'Kainuu', onn:92, xk:416, yk:377' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Kainuu tapahtui vuonna 2020 yhteensä 92 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' },
-{id:'MK19', name: 'Lappi', onn:226, xk:359, yk:182' ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Lappi tapahtui vuonna 2020 yhteensä 226 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' }
+{id:'MK01', name: 'Uusimaa', onn:2982, xk:302, yk:649 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Uusimaa tapahtui vuonna 2020 yhteensä 2982 riistaonnettomuutta. Eniten kolareita aiheutti valkohäntäpeura.' },
+{id:'MK02', name: 'Varsinais-Suomi', onn:3309, xk:232, yk:630 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Varsinais-Suomi tapahtui vuonna 2020 yhteensä 3309 riistaonnettomuutta. Eniten kolareita aiheutti valkohäntäpeura.' },
+{id:'MK05', name: 'Kanta-Häme', onn:1341, xk:289, yk:614 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Kanta-Häme tapahtui vuonna 2020 yhteensä 1341 riistaonnettomuutta. Eniten kolareita aiheutti valkohäntäpeura.' },
+{id:'MK07', name: 'Päijät-Häme', onn:474, xk:330, yk:599 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Päijät-Häme tapahtui vuonna 2020 yhteensä 474 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
+{id:'MK08', name: 'Kymenlaakso', onn:165, xk:372, yk:628 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Kymenlaakso tapahtui vuonna 2020 yhteensä 165 riistaonnettomuutta. Eniten kolareita aiheutti kymenlaakso.' },
+{id:'MK09', name: 'Etelä-Karjala', onn:121, xk:412, yk:603 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Etelä-Karjala tapahtui vuonna 2020 yhteensä 121 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' },
+{id:'MK04', name: 'Satakunta', onn:1462, xk:217, yk:569 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Satakunta tapahtui vuonna 2020 yhteensä 1462 riistaonnettomuutta. Eniten kolareita aiheutti valkohäntäpeura.' },
+{id:'MK06', name: 'Pirkanmaa', onn:1732, xk:269, yk:563 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Pirkanmaa tapahtui vuonna 2020 yhteensä 1732 riistaonnettomuutta. Eniten kolareita aiheutti valkohäntäpeura.' },
+{id:'MK13', name: 'Keski-Suomi', onn:444, xk:326, yk:504 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Keski-Suomi tapahtui vuonna 2020 yhteensä 444 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
+{id:'MK14', name: 'Etelä-Pohjanmaa', onn:339, xk:255, yk:492 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Etelä-Pohjanmaa tapahtui vuonna 2020 yhteensä 339 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
+{id:'MK15', name: 'Pohjanmaa', onn:444, xk:220, yk:467 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Pohjanmaa tapahtui vuonna 2020 yhteensä 444 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
+{id:'MK10', name: 'Etelä-Savo', onn:170, xk:393, yk:561 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Etelä-Savo tapahtui vuonna 2020 yhteensä 170 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' },
+{id:'MK11', name: 'Pohjois-Savo', onn:186, xk:385, yk:470 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Pohjois-Savo tapahtui vuonna 2020 yhteensä 186 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' },
+{id:'MK12', name: 'Pohjois-Karjala', onn:134, xk:463, yk:483 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Pohjois-Karjala tapahtui vuonna 2020 yhteensä 134 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' },
+{id:'MK16', name: 'Keski-Pohjanmaa', onn:88, xk:290, yk:444 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Keski-Pohjanmaa tapahtui vuonna 2020 yhteensä 88 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
+{id:'MK17', name: 'Pohjois-Pohjanmaa', onn:295, xk:340, yk:374 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Pohjois-Pohjanmaa tapahtui vuonna 2020 yhteensä 295 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
+{id:'MK18', name: 'Kainuu', onn:92, xk:416, yk:377 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Kainuu tapahtui vuonna 2020 yhteensä 92 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' },
+{id:'MK19', name: 'Lappi', onn:226, xk:359, yk:182 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Lappi tapahtui vuonna 2020 yhteensä 226 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' }
 ![image](https://user-images.githubusercontent.com/24507843/156731793-9c63780d-cea3-47d1-a449-f5f1406dad84.png)
 
 							
