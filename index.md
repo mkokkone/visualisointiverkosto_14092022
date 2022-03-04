@@ -126,9 +126,7 @@ Jotta kartta on ymmärrettävä lisätään teemakarttakuvioon vielä otsikko, l
 
 
  <style>
-svg {
-  background: url('kuvat/maakunta700.png') no-repeat;
-}
+
 
 div.tooltip {	
     position: absolute;
@@ -143,6 +141,9 @@ div.tooltip {
     border-radius: 8px;			
     pointer-events: none;
 
+}
+svg {
+  background: url('kuvat/maakunta700.png') no-repeat;
 }
 </style>
 
