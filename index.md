@@ -118,7 +118,7 @@ Jotta kartta on ymmärrettävä lisätään teemakarttakuvioon vielä otsikko, l
 11. Tallennetaan lopputulos kuvaksi Layout -> Export as Image
 
 
-##D3js
+## D3js
 
 
 <body>
