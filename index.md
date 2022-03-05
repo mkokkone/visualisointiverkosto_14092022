@@ -118,7 +118,11 @@ Jotta kartta on ymmärrettävä lisätään teemakarttakuvioon vielä otsikko, l
 11. Tallennetaan lopputulos kuvaksi Layout -> Export as Image
 
 
-## D3js
+## D3js - Mihin eläimeen törmätään eniten Manner-Suomen eri maakunnissa
+
+Katso alla olevasta kuviosta mikä riistaeläin aiheuttaa eniten kolareita kunnittain ja miten onnettomuudet jakautuvat vuoden sisällä eläinlajeittain. Alla on mallikuvat eläimistä tunnistamisen helpottamiseksi.
+<img src="kuvat\pjimage.jpg">
+
 
 
 <body>
