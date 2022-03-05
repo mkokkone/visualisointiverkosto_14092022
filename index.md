@@ -132,7 +132,7 @@ div.tooltip {
     position: absolute;
 
     text-align: left;			
-    width: 200px;					
+    width: 170px;					
     height: 40px;					
     padding: 2px;				
     font: 14px sans-serif;		
@@ -336,7 +336,7 @@ var dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.
 		tooltip
 		  .transition()
 		  .duration(200)
-		  .style("opacity", 1)
+		  .style("opacity", 0)
 	  }
 
 
