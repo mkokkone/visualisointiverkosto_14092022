@@ -479,30 +479,355 @@ function vaihdaluku(color){
 
 </body>
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
 ```
+<body>
+ <meta charset="utf-8">
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
-### Jekyll Themes
+ <style>
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/mkokkone/visualisointikoulutus/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
+div.tooltip {	
+    position: absolute;
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+    text-align: left;			
+    width: 150px;					
+    height: 40px;					
+    padding: 2px;				
+    font: 14px sans-serif;		
+    background: black;	
+    border: 6px;		
+    border-radius: 8px;			
+    pointer-events: none;
+
+}
+svg {
+  background: url('kuvat/maakunta700.png') no-repeat;
+}
+</style>
+
+
+
+
+ <!-- Add 2 buttons-->
+
+<script src="https://d3js.org/d3.v4.min.js">
+</script>
+
+
+
+<div id="chart"> 
+
+
+
+
+
+<script>
+
+//(function test () {
+	var width = 700,
+	height=700;
+//data
+	var data = [
+{id:'MK01', name: 'Uusimaa', onn:2982, xk:302, yk:649 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Uusimaa tapahtui vuonna 2020 yhteensä 2982 riistaonnettomuutta. Eniten kolareita aiheutti valkohäntäpeura.' },
+{id:'MK02', name: 'Varsinais-Suomi', onn:3309, xk:232, yk:630 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Varsinais-Suomi tapahtui vuonna 2020 yhteensä 3309 riistaonnettomuutta. Eniten kolareita aiheutti valkohäntäpeura.' },
+{id:'MK05', name: 'Kanta-Häme', onn:1341, xk:289, yk:614 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Kanta-Häme tapahtui vuonna 2020 yhteensä 1341 riistaonnettomuutta. Eniten kolareita aiheutti valkohäntäpeura.' },
+{id:'MK07', name: 'Päijät-Häme', onn:474, xk:330, yk:599 ,kuva: 'kuvat/metsakauris.png' , altt:'Maakunnassa Päijät-Häme tapahtui vuonna 2020 yhteensä 474 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
+{id:'MK08', name: 'Kymenlaakso', onn:165, xk:372, yk:628 ,kuva: 'kuvat/metsakauris.png' , altt:'Maakunnassa Kymenlaakso tapahtui vuonna 2020 yhteensä 165 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
+{id:'MK09', name: 'Etelä-Karjala', onn:121, xk:412, yk:603 ,kuva: 'kuvat/hirvi.png' , altt:'Maakunnassa Etelä-Karjala tapahtui vuonna 2020 yhteensä 121 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' },
+{id:'MK04', name: 'Satakunta', onn:1462, xk:217, yk:569 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Satakunta tapahtui vuonna 2020 yhteensä 1462 riistaonnettomuutta. Eniten kolareita aiheutti valkohäntäpeura.' },
+{id:'MK06', name: 'Pirkanmaa', onn:1732, xk:269, yk:563 ,kuva: 'kuvat/valkohantapeura.png' , altt:'Maakunnassa Pirkanmaa tapahtui vuonna 2020 yhteensä 1732 riistaonnettomuutta. Eniten kolareita aiheutti valkohäntäpeura.' },
+{id:'MK13', name: 'Keski-Suomi', onn:444, xk:326, yk:504 ,kuva: 'kuvat/metsakauris.png' , altt:'Maakunnassa Keski-Suomi tapahtui vuonna 2020 yhteensä 444 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
+{id:'MK14', name: 'Etelä-Pohjanmaa', onn:339, xk:255, yk:492 ,kuva: 'kuvat/metsakauris.png' , altt:'Maakunnassa Etelä-Pohjanmaa tapahtui vuonna 2020 yhteensä 339 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
+{id:'MK15', name: 'Pohjanmaa', onn:444, xk:220, yk:467 ,kuva: 'kuvat/metsakauris.png' , altt:'Maakunnassa Pohjanmaa tapahtui vuonna 2020 yhteensä 444 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
+{id:'MK10', name: 'Etelä-Savo', onn:170, xk:393, yk:561 ,kuva: 'kuvat/hirvi.png' , altt:'Maakunnassa Etelä-Savo tapahtui vuonna 2020 yhteensä 170 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' },
+{id:'MK11', name: 'Pohjois-Savo', onn:186, xk:385, yk:470 ,kuva: 'kuvat/hirvi.png' , altt:'Maakunnassa Pohjois-Savo tapahtui vuonna 2020 yhteensä 186 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' },
+{id:'MK12', name: 'Pohjois-Karjala', onn:134, xk:463, yk:483 ,kuva: 'kuvat/hirvi.png' , altt:'Maakunnassa Pohjois-Karjala tapahtui vuonna 2020 yhteensä 134 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' },
+{id:'MK16', name: 'Keski-Pohjanmaa', onn:88, xk:290, yk:444 ,kuva: 'kuvat/metsakauris.png' , altt:'Maakunnassa Keski-Pohjanmaa tapahtui vuonna 2020 yhteensä 88 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
+{id:'MK17', name: 'Pohjois-Pohjanmaa', onn:295, xk:340, yk:374 ,kuva: 'kuvat/metsakauris.png' , altt:'Maakunnassa Pohjois-Pohjanmaa tapahtui vuonna 2020 yhteensä 295 riistaonnettomuutta. Eniten kolareita aiheutti metsäkauris.' },
+{id:'MK18', name: 'Kainuu', onn:92, xk:416, yk:377 ,kuva: 'kuvat/hirvi.png' , altt:'Maakunnassa Kainuu tapahtui vuonna 2020 yhteensä 92 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' },
+{id:'MK19', name: 'Lappi', onn:226, xk:359, yk:182 ,kuva: 'kuvat/hirvi.png' , altt:'Maakunnassa Lappi tapahtui vuonna 2020 yhteensä 226 riistaonnettomuutta. Eniten kolareita aiheutti hirvi.' }
+
+
+							
+];
+
+
+//määritellään tooltippi
+var dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.xk, yk: d.yk,value: d.onn,onn: d.onn, altt: d.altt } });
+
+//määritellään kuvio
+	var svg = d3.select("#chart")
+	.append("svg")
+	.attr("height", height)
+	.attr("width", width)
+	.append("g")
+	.attr("transform", "translate(0,0)")
+	
+	d3.select('#tooltip')
+	.append('div')
+
+	.attr('style', 'position: absolute; opacity: 0;');
+
+
+	var defs = svg.append("defs");
+	defs.append("pattern")
+	.attr("id", "elain")
+	.attr("height", "100%")
+	.attr("width", "100%")
+	.attr("patternContentUnits", "objectBoundingBox")
+	.append ("image")
+	.attr("height",1)
+	.attr("width",1)
+	.attr("preserveAspectRatio", "none")
+	.attr("xmlns:xlink", "http://www.w3.org/1999/xlink")
+	.attr("xlink:href","IMG_20210707_1458482.jpg")
+
+//skaalataan pallojen koko
+	var radiusScale = d3.scaleSqrt().domain([1,10000]).range([1,50])	
+	
+	//var forceY = d3.forceY(height/2).strength(0.05)
+	
+	// if (d.maakunta=== '01') { return 300
+	//} else if (d.maakunta=== '02') { return 350
+	//} else if (d.maakunta=== '04') { return 400
+	//} else if (d.maakunta=== '05') { return 450
+	//} else if (d.maakunta=== '06') { return 500
+	//} else if (d.maakunta=== '07') { return 550
+	//} else if (d.maakunta=== '08') { return 600
+	//} else if (d.maakunta=== '09') { return 660
+	//} else if (d.maakunta=== '10') { return 700
+	//} else if (d.maakunta=== '11') { return 750
+	//} else if (d.maakunta=== '12') { return 800
+	//} else if (d.maakunta=== '13') { return 850
+	//} else if (d.maakunta=== '14') { return 900
+	//} else if (d.maakunta=== '15') { return 950
+	//} else if (d.maakunta=== '16') { return 1000
+	//} else if (d.maakunta=== '17') { return 1050
+	//} else if (d.maakunta=== '18') { return 1100
+	//} else  return 1150
+	
+	
+	var forceX = d3.forceX(function(d) {
+		return d.xk
+	}).strength(1.0)
+	var forceY = d3.forceY(function(d) {
+		return d.yk
+	}).strength(1.0)
+	
+	
+		
+	//}).strength(0.05)
+
+//	var forceX = d3.forceX(function(d) {
+//	  return d.xk
+//	} else if (d.maakunta=== '02') { return 700
+//	} else if (d.maakunta=== '04') { return 500
+//	} else if (d.maakunta=== '05') { return 550
+//	} else if (d.maakunta=== '06') { return 500
+//	} else if (d.maakunta=== '07') { return 525
+//	} else if (d.maakunta=== '08') { return 500
+//	} else if (d.maakunta=== '09') { return 500
+//	} else if (d.maakunta=== '10') { return 450
+//	} else if (d.maakunta=== '11') { return 400
+//	} else if (d.maakunta=== '12') { return 350
+//	} else if (d.maakunta=== '13') { return 400
+//	} else if (d.maakunta=== '14') { return 400
+//	} else if (d.maakunta=== '15') { return 300
+//	} else if (d.maakunta=== '16') { return 250
+//	} else if (d.maakunta=== '17') { return 200
+//	} else if (d.maakunta=== '18') { return 150
+	
+	
+	
+		
+//	}).strength(0.05)
+
+
+	var simulation = d3.forceSimulation()
+	//.force("x", d3.forceX(width/2).strength(0.05))
+
+	.force("x", forceX)
+	.force("y", forceY)
+
+	//.force("y", d3.forceY(width/2).strength(0.05))
+	.force("collide", d3.forceCollide(function(d){
+		return radiusScale(d.value)+1;
+	}))
+
+
+	var tooltip = d3.select("#chart")
+      .append("div")
+      .style("opacity", 0)
+      .attr("class", "tooltip")
+      .style("background-color", "#ea7404")
+      .style("border-radius", "10px")
+      .style("padding", "10px")
+      .style("color", "black")
+
+	var showTooltip = function(d) {
+	
+		tooltip
+		  .transition()
+		  .duration(200)
+		tooltip
+		  .style("opacity", 1)
+	.html("<b>" +d.name+"</b>" + "<br> Onnettomuuksia: " + d.onn)	       
+		//.style("left", (d3.mouse(this)[0]+50) + "px")
+		//.style("top", (d3.mouse(this)[1]+14550) + "px")
+		//.style("left", (d3.mouse(this)[0]+10) + "px")
+		//.style("top", (d3.mouse(this)[1]+0) + "px")
+      		.style("left", (parseInt(d3.mouse(this)[0]+10) + document.getElementById("chart").offsetLeft) + "px")     
+      		.style("top", (parseInt(d3.mouse(this)[1]+10) + document.getElementById("chart").offsetTop) + "px")
+		  
+	  }
+	  var moveTooltip = function(d) {
+
+		tooltip
+	    
+        
+		 //.style("left", (d3.mouse(this)[0]+50) + "px")
+		 //.style("top", (d3.mouse(this)[1]+14550) + "px")
+	      	 .style("left", (parseInt(d3.mouse(this)[0]+10) + document.getElementById("chart").offsetLeft) + "px")     
+      		 .style("top", (parseInt(d3.mouse(this)[1]+10) + document.getElementById("chart").offsetTop) + "px") 
+
+
+		  
+	  }
+	  var hideTooltip = function(d) {
+		tooltip
+		  .transition()
+		  .duration(200)
+		  .style("opacity", 0)
+	  }
+
+
+	//laitetaan data "jonoon"
+function testi () {
+d3.queue()
+.await(ready)
+function ready (error, datapoints) {
+		defs.selectAll(".artist-pattern")
+		.data(dataFilter)
+		.enter().append("pattern")
+		.attr("class", "artist-pattern")
+		.attr("id", function(d) {
+			return d.name.replace(" ","-")
+		})
+		.attr("height", "100%")
+		.attr("width", "100%")
+		.attr("patternContentUnits", "objectBoundingBox")
+		.append ("image")
+		.attr("height",1)
+		.attr("width",1)
+		.attr("preserveAspectRatio", "none")
+		.attr("xmlns:xlink", "http://www.w3.org/1999/xlink")
+		.attr("xlink:href",function(d) {
+			return d.kuva
+		})
+
+		
+		var circles = svg.selectAll(".artist")
+		.data(dataFilter)
+		.enter().append("circle")
+		.attr("class", "artist")
+		.attr("r", function(d) {
+			return radiusScale(d.value)
+		})
+		.attr("fill", "#0073b0")
+		.on("mouseover.teksti", showTooltip )
+		.on("mousemove.teksti", moveTooltip )
+		.on("mouseleave.teksti", hideTooltip )
+		.on('mouseover', function(d) {
+			d3.select('#tooltip').style('opacity', 1).text(d)
+		 })
+		 // on('mouseout', function() {
+		//	d3.select('#tooltip').style('opacity', 0)
+		//  })
+		.on('mouseover', function(d, i) {
+			console.log("mouseover on", this)
+			console.log("mouseover on", d.value)
+
+      // make the mouseover'd element
+      // bigger and red
+
+
+
+
+      d3.select(this)
+		//.data(data)
+        .transition()
+        .duration(100)
+        .attr('r', function(d) {
+			return radiusScale(d.value)+20
+		})
+        .attr('fill', function (d) {
+		return "url(#"+ d.name.replace(" ","-") +")"
+			//.attr('fill', function (d) {
+				//return "url(#elain)"
+		})
+
+
+    })
+
+    .on('mouseout', function(d, i) {
+      console.log("mouseout", this);
+      // return the mouseover'd element
+      // to being smaller and black
+
+      d3.select(this)
+        .transition()
+        .duration(100)
+        .attr('r', function(d) {
+			return radiusScale(d.value)
+		})
+		//poista kommentit, jos halutaan palauttaa sininenn pallura
+        //.attr('fill', 'lightblue');
+    })
+
+	  
+		simulation.nodes(dataFilter)
+
+		.on('tick', ticked)
+		function ticked() {
+			circles
+			.attr("cx", function(d) {
+				return d.x
+			})
+			.attr("cy", function(d) {
+				return d.y
+			})	
+
+
+		}
+
+
+
+
+}}
+testi()
+
+
+
+function vaihdaluku(color){
+	
+
+
+	
+	dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.xk, yk: d.yk,value: d.onn,onn: d.onn,onnkvl: d.onnkvl,kaavio: d.kaavio} });
+	g.selectAll(".circle")
+	//testi() 
+
+ }
+
+ 
+//})()
+
+
+
+
+</script>
+</div>
+
+</body>
+```
