@@ -325,8 +325,8 @@ var dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.
 		//.style("top", (d3.mouse(this)[1]+14550) + "px")
 		//.style("left", (d3.mouse(this)[0]+10) + "px")
 		//.style("top", (d3.mouse(this)[1]+0) + "px")
-      		.style("left", (parseInt(d3.select(this).attr("cx")) + document.getElementById("svg").offsetLeft) + "px")     
-      		.style("top", (parseInt(d3.select(this).attr("cy")) + document.getElementById("svg").offsetTop) + "px"); 
+      		.style("left", (parseInt(d3.mouse(this)[0]+20) + document.getElementById("svg").offsetLeft) + "px")     
+      		.style("top", (parseInt(d3.mouse(this)[1]+20) + document.getElementById("svg").offsetTop) + "px"); 
 		  
 	  }
 	  var moveTooltip = function(d) {
@@ -336,8 +336,8 @@ var dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.
         
 		 //.style("left", (d3.mouse(this)[0]+50) + "px")
 		 //.style("top", (d3.mouse(this)[1]+14550) + "px")
-	      	 .style("left", (parseInt(d3.select(this).attr("cx")) + document.getElementById("svg").offsetLeft) + "px")     
-      		 .style("top", (parseInt(d3.select(this).attr("cy")) + document.getElementById("svg").offsetTop) + "px"); 
+	      	 .style("left", (parseInt(parseInt(d3.mouse(this)[0]+20) + document.getElementById("svg").offsetLeft) + "px")     
+      		 .style("top", (parseInt(d3.mouse(this)[1]+20)) + document.getElementById("svg").offsetTop) + "px"); 
 
 
 		  
