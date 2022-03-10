@@ -335,26 +335,7 @@ var dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.
 //skaalataan pallojen koko
 	var radiusScale = d3.scaleSqrt().domain([1,10000]).range([1,50])	
 	
-	//var forceY = d3.forceY(height/2).strength(0.05)
-	
-	// if (d.maakunta=== '01') { return 300
-	//} else if (d.maakunta=== '02') { return 350
-	//} else if (d.maakunta=== '04') { return 400
-	//} else if (d.maakunta=== '05') { return 450
-	//} else if (d.maakunta=== '06') { return 500
-	//} else if (d.maakunta=== '07') { return 550
-	//} else if (d.maakunta=== '08') { return 600
-	//} else if (d.maakunta=== '09') { return 660
-	//} else if (d.maakunta=== '10') { return 700
-	//} else if (d.maakunta=== '11') { return 750
-	//} else if (d.maakunta=== '12') { return 800
-	//} else if (d.maakunta=== '13') { return 850
-	//} else if (d.maakunta=== '14') { return 900
-	//} else if (d.maakunta=== '15') { return 950
-	//} else if (d.maakunta=== '16') { return 1000
-	//} else if (d.maakunta=== '17') { return 1050
-	//} else if (d.maakunta=== '18') { return 1100
-	//} else  return 1150
+
 	
 	
 	var forceX = d3.forceX(function(d) {
@@ -366,26 +347,7 @@ var dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.
 	
 	
 		
-	//}).strength(0.05)
-
-//	var forceX = d3.forceX(function(d) {
-//	  return d.xk
-//	} else if (d.maakunta=== '02') { return 700
-//	} else if (d.maakunta=== '04') { return 500
-//	} else if (d.maakunta=== '05') { return 550
-//	} else if (d.maakunta=== '06') { return 500
-//	} else if (d.maakunta=== '07') { return 525
-//	} else if (d.maakunta=== '08') { return 500
-//	} else if (d.maakunta=== '09') { return 500
-//	} else if (d.maakunta=== '10') { return 450
-//	} else if (d.maakunta=== '11') { return 400
-//	} else if (d.maakunta=== '12') { return 350
-//	} else if (d.maakunta=== '13') { return 400
-//	} else if (d.maakunta=== '14') { return 400
-//	} else if (d.maakunta=== '15') { return 300
-//	} else if (d.maakunta=== '16') { return 250
-//	} else if (d.maakunta=== '17') { return 200
-//	} else if (d.maakunta=== '18') { return 150
+	
 	
 	
 	
