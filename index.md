@@ -134,28 +134,43 @@ riista <- read.delim("/001_12sg_2021m12_20220225-112559.txt")
 6. Peruskuva
 ```
 ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity", na.rm=TRUE)
-
 ```
+<img src="kuvat\kuva1.png">
+
 7. Maakunnittain omina kuivionaan
 ```
 ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity", na.rm=TRUE)+
 facet_wrap(vars(Alue))
 ```
+
+<img src="kuvat\kuva2.png">
+
 8. Maakunnittain vapaa y-skaala
 ```
 ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity", na.rm=TRUE)+
 facet_wrap(vars(Alue), scales = "free")
+```
+
+<img src="kuvat\kuva3.png">
+
 9. Tick-marksit pois
+```
 ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity", na.rm=TRUE)+
 facet_wrap(vars(Alue), scales = "free_y")+ theme_light() 
 theme(  axis.text.x = element_blank())
 ```
+
+<img src="kuvat\kuva4.png">
+
 9. Tick-marksit 45 astetta
 ```
 ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity", na.rm=TRUE)+
 facet_wrap(vars(Alue), scales = "free")+ 
 theme(axis.text.x = element_text(angle=45)) 
 ```
+
+<img src="kuvat\kuva5.png">
+
 10. tick-marksit priorisoitu
 ```
 ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity", na.rm=TRUE)+
@@ -163,6 +178,9 @@ facet_wrap(vars(Alue), scales = "free")+
 theme(strip.text.x=element_text()) +
 scale_x_discrete(guide = guide_axis(check.overlap = TRUE))
 ```
+
+<img src="kuvat\kuva6.png">
+
 11. tick-marksit blankottu ja sitten käännetty
 ```
 ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity", na.rm=TRUE)+
@@ -170,6 +188,9 @@ facet_wrap(vars(Alue), scales = "free")+
 theme(  axis.text.x = element_blank()) +
 theme(axis.text.x = element_text(angle=45)) 
 ```
+
+<img src="kuvat\kuva7.png">
+
 12. värit
 ```
 rhg_cols <- c("#0073B0", "#ea7404", "#a40084", "#8a8a9e", "#253081", 
@@ -182,6 +203,9 @@ theme(axis.text.x = element_text(angle=45))+
 scale_fill_manual(values = rhg_cols)
 
 ```
+
+<img src="kuvat\kuva8.png">
+
 13. järjestys
 ```
 ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=factor(Osallinen.eläinlaji,levels=c("Valkohäntäpeura", "Metsäkauris", "Hirvi", "Metsäpeura", "Villisika", "Kuusipeura")))) +    geom_bar(stat = "identity", na.rm=TRUE)+
@@ -189,8 +213,9 @@ facet_wrap(vars(Alue), scales = "free_y")+ theme_light() +
 theme(  axis.text.x = element_blank()) +
 theme(axis.text.x = element_text(angle=45))+
 scale_fill_manual(values = rhg_cols)
-
 ```
+<img src="kuvat\kuva9.png">
+
 14. otsikot ja viimeistely
 ```
 kuva<-ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=factor(Osallinen.eläinlaji,levels=c("Valkohäntäpeura", "Metsäkauris", "Hirvi", "Metsäpeura", "Villisika", "Kuusipeura")))) +    geom_bar(stat = "identity", na.rm=TRUE)+
@@ -205,6 +230,8 @@ xlab("Kuukausi") +
 ylab("Onnettomuuksien lukumäärä")+
 theme(plot.title = element_text(size=16,hjust = 0.5))
 ```
+
+<img src="kuvat\kuva10.png">
 
 
 ## D3js - Mihin eläimeen törmätään eniten Manner-Suomen eri maakunnissa?
