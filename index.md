@@ -131,38 +131,29 @@ library(ggplot2)
 ```
 riista <- read.delim("/001_12sg_2021m12_20220225-112559.txt")
 ```
-6. Peruskuva
+6. Tehdään kuukausittain peruskuva ggplotilla, ensimmäisessä blokissa määritellään: aineisto = riista, x=kuukausi ja y=Riistaonnettomuuudet eli onnettomuuksien lukumäärä, fill=Osallinen.eläinlaji eli pylväät täytetään osallisten eläinlajien mukaan. Jälkimmäisessä osiossa määritellään että halutaan pylväsdiagrammi: geom_bar ja halutaan laskea tapauksien lukumäärä: stat = "identity".
 ```
-ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity", na.rm=TRUE)
+ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity")
 ```
 <img src="kuvat\kuva1.png">
 
-7. Maakunnittain omina kuivionaan
+7. Jaetaan tiedot maakunnittaisiin kuviin lisäämällä ensimmäisen rivin loppuun + -merkki ja facet_wrap -koodi, jossa kerrotaan että tiedot jaetaan useampaan kuvaan Alue-muuttujan avulla
 ```
-ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity", na.rm=TRUE)+
+ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity")+
 facet_wrap(vars(Alue))
 ```
 
 <img src="kuvat\kuva2.png">
 
-8. Maakunnittain vapaa y-skaala
+8. Maakuntien erot onnettomuusmäärissä ovat isoja, joten vapautetaan akseleiden skaalaus, scales = "free" -optiolla.
 ```
-ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity", na.rm=TRUE)+
+ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity")+
 facet_wrap(vars(Alue), scales = "free")
 ```
 
 <img src="kuvat\kuva3.png">
 
-9. Tick-marksit pois
-```
-ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity", na.rm=TRUE)+
-facet_wrap(vars(Alue), scales = "free_y")+ theme_light() 
-theme(  axis.text.x = element_blank())
-```
-
-<img src="kuvat\kuva4.png">
-
-9. Tick-marksit 45 astetta
+9. X-akselin otsikot menevät päällekkäin toistensa kanssa, käännetään niitä 45 astetta: angle-optiolla
 ```
 ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity", na.rm=TRUE)+
 facet_wrap(vars(Alue), scales = "free")+ 
@@ -171,9 +162,9 @@ theme(axis.text.x = element_text(angle=45))
 
 <img src="kuvat\kuva5.png">
 
-10. tick-marksit priorisoitu
+10. Toinen vaihtoehto olisi käyttää priorisointia ja estää akselin otsikoiden päällekäisyys
 ```
-ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity", na.rm=TRUE)+
+ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity")+
 facet_wrap(vars(Alue), scales = "free")+ 
 theme(strip.text.x=element_text()) +
 scale_x_discrete(guide = guide_axis(check.overlap = TRUE))
@@ -181,9 +172,9 @@ scale_x_discrete(guide = guide_axis(check.overlap = TRUE))
 
 <img src="kuvat\kuva6.png">
 
-11. tick-marksit blankottu ja sitten käännetty
+11. Pysytellään kuitenkin kääntämisessä, aikasemmassa esimerkissä akselin otsikot menivät kuvion päälle, joten blankotaan ensin ja asetetaan sitten akselin otsikot uudestaan
 ```
-ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity", na.rm=TRUE)+
+ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity")+
 facet_wrap(vars(Alue), scales = "free")+
 theme(  axis.text.x = element_blank()) +
 theme(axis.text.x = element_text(angle=45)) 
@@ -191,13 +182,13 @@ theme(axis.text.x = element_text(angle=45))
 
 <img src="kuvat\kuva7.png">
 
-12. värit
+12. Tähän asti on käytetty oletusväriskaalaa. asetetaan kuvioon Tilastokeskuksen väriskaalan mukaiset värit ja otetaan ne käyttöön scale_fill_manual -optiolla
 ```
 rhg_cols <- c("#0073B0", "#ea7404", "#a40084", "#8a8a9e", "#253081", 
               "#049de3", "#722ea5")
 
-ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity", na.rm=TRUE)+
-facet_wrap(vars(Alue), scales = "free")+ theme_light()+ 
+ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=Osallinen.eläinlaji)) +    geom_bar(stat = "identity")+
+facet_wrap(vars(Alue), scales = "free")+ 
 theme(  axis.text.x = element_blank()) +
 theme(axis.text.x = element_text(angle=45))+
 scale_fill_manual(values = rhg_cols)
@@ -206,19 +197,19 @@ scale_fill_manual(values = rhg_cols)
 
 <img src="kuvat\kuva8.png">
 
-13. järjestys
+13. Havainnot ovat nyt aakkosjärjestyksessä eläinlajin mukaan, asetetaan ne suuruusjärjestykseen manuaalisesti
 ```
-ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=factor(Osallinen.eläinlaji,levels=c("Valkohäntäpeura", "Metsäkauris", "Hirvi", "Metsäpeura", "Villisika", "Kuusipeura")))) +    geom_bar(stat = "identity", na.rm=TRUE)+
-facet_wrap(vars(Alue), scales = "free_y")+ theme_light() +
+ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=factor(Osallinen.eläinlaji,levels=c("Valkohäntäpeura", "Metsäkauris", "Hirvi", "Metsäpeura", "Villisika", "Kuusipeura")))) +    geom_bar(stat = "identity")+
+facet_wrap(vars(Alue), scales = "free_y") +
 theme(  axis.text.x = element_blank()) +
 theme(axis.text.x = element_text(angle=45))+
 scale_fill_manual(values = rhg_cols)
 ```
 <img src="kuvat\kuva9.png">
 
-14. otsikot ja viimeistely
+14. Viimeistellään kuvio korjaamalla selitteen otsikko, asettamalla x- ja y akseleille otsikot ja antamalla koko kuviolla otsikko
 ```
-kuva<-ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=factor(Osallinen.eläinlaji,levels=c("Valkohäntäpeura", "Metsäkauris", "Hirvi", "Metsäpeura", "Villisika", "Kuusipeura")))) +    geom_bar(stat = "identity", na.rm=TRUE)+
+kuva<-ggplot(riista , aes(Kuukausi, Riistaonnettomuudet, fill=factor(Osallinen.eläinlaji,levels=c("Valkohäntäpeura", "Metsäkauris", "Hirvi", "Metsäpeura", "Villisika", "Kuusipeura")))) +    geom_bar(stat = "identity")+
 facet_wrap(vars(Alue), scales = "free") + theme_light() 
 kuva + 
 theme(  axis.text.x = element_blank()) +
