@@ -120,6 +120,17 @@ Jotta kartta on ymmärrettävä lisätään teemakarttakuvioon vielä otsikko, l
 
 ## R Riistaonnettomuudet eläinlajeittain, maakunnittain ja kuukausittain
 
+1. Ladataan pohjadataksi maakunnittainen riistaonnettomuusaineisto PX-Web-taulukosta. Ladataan tiedot eläinlajeittain, maakunnittian ja kuukasitasolla. Tallennetaan tiedot relaatiotiedostoon, jotta tietoja on helppo käsitellä seuraavassa vaiheessa. Jätetään yhteensä-luokat pois.
+2. Asennetaan ggplot2-kirjasto: Packages -> Install packages ja valitaan listalta ggplot2
+3. Avataan R ja avataan uusi skripti: FIle -> New script
+4. Ladataan ggplot2-kirjasto
+```
+library(ggplot2)
+```
+5. Luetaan aineisto sisään nimelle riista
+```
+riista <- read.delim("G:/visukoulutus/001_12sg_2021m12_20220225-112559.txt")
+```
 
 ## D3js - Mihin eläimeen törmätään eniten Manner-Suomen eri maakunnissa?
 
