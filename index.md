@@ -121,6 +121,11 @@ Jotta kartta on ymmärrettävä lisätään teemakarttakuvioon vielä otsikko, l
 ## R Riistaonnettomuudet eläinlajeittain, maakunnittain ja kuukausittain
 
 1. Ladataan pohjadataksi maakunnittainen riistaonnettomuusaineisto PX-Web-taulukosta. Ladataan tiedot eläinlajeittain, maakunnittian ja kuukasitasolla. Tallennetaan tiedot relaatiotiedostoon, jotta tietoja on helppo käsitellä seuraavassa vaiheessa. Jätetään yhteensä-luokat pois.
+<img src="kuvat\relaatiotiedosto2.png">
+
+Datan voi ladata myös [täältä](https://github.com/mkokkone/visualisointikoulutus/blob/gh-pages/001_12sg_2021m12_20220311-154122.txt):
+
+
 2. Asennetaan ggplot2-kirjasto: Packages -> Install packages ja valitaan listalta ggplot2
 3. Avataan R ja avataan uusi skripti: FIle -> New script
 4. Ladataan ggplot2-kirjasto
