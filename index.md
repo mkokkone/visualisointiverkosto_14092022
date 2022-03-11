@@ -232,7 +232,7 @@ theme(plot.title = element_text(size=16,hjust = 0.5))
 <img src="kuvat\kuva10.png">
 
 
-## D3js - Mihin eläimeen törmätään eniten Manner-Suomen eri maakunnissa?
+## D3js - Mihin eläimeen törmättiin eniten Manner-Suomen eri maakunnissa vuonna 2020?
 
 Katso alla olevasta kuviosta mikä riistaeläin aiheuttaa eniten kolareita kunnittain ja miten onnettomuudet jakautuvat vuoden sisällä eläinlajeittain. Alla on mallikuvat eläimistä tunnistamisen helpottamiseksi.
 <img src="kuvat\pjimage.jpg">
