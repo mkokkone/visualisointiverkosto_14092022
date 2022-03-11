@@ -634,7 +634,7 @@ svg {
 
 
 
- <!-- Add 2 buttons-->
+
 
 <script src="https://d3js.org/d3.v4.min.js">
 </script>
@@ -706,7 +706,7 @@ var dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.
 	.attr("width",1)
 	.attr("preserveAspectRatio", "none")
 	.attr("xmlns:xlink", "http://www.w3.org/1999/xlink")
-	.attr("xlink:href","IMG_20210707_1458482.jpg")
+
 
 //skaalataan pallojen koko
 	var radiusScale = d3.scaleSqrt().domain([1,10000]).range([1,50])	
@@ -728,16 +728,12 @@ var dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.
 	
 	
 		
-//	}).strength(0.05)
-
 
 	var simulation = d3.forceSimulation()
-	//.force("x", d3.forceX(width/2).strength(0.05))
 
 	.force("x", forceX)
 	.force("y", forceY)
 
-	//.force("y", d3.forceY(width/2).strength(0.05))
 	.force("collide", d3.forceCollide(function(d){
 		return radiusScale(d.value)+1;
 	}))
@@ -760,10 +756,7 @@ var dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.
 		tooltip
 		  .style("opacity", 1)
 	.html("<b>" +d.name+"</b>" + "<br> Onnettomuuksia: " + d.onn)	       
-		//.style("left", (d3.mouse(this)[0]+50) + "px")
-		//.style("top", (d3.mouse(this)[1]+14550) + "px")
-		//.style("left", (d3.mouse(this)[0]+10) + "px")
-		//.style("top", (d3.mouse(this)[1]+0) + "px")
+
       		.style("left", (parseInt(d3.mouse(this)[0]+10) + document.getElementById("chart").offsetLeft) + "px")     
       		.style("top", (parseInt(d3.mouse(this)[1]+10) + document.getElementById("chart").offsetTop) + "px")
 		  
@@ -772,9 +765,7 @@ var dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.
 
 		tooltip
 	    
-        
-		 //.style("left", (d3.mouse(this)[0]+50) + "px")
-		 //.style("top", (d3.mouse(this)[1]+14550) + "px")
+
 	      	 .style("left", (parseInt(d3.mouse(this)[0]+10) + document.getElementById("chart").offsetLeft) + "px")     
       		 .style("top", (parseInt(d3.mouse(this)[1]+10) + document.getElementById("chart").offsetTop) + "px") 
 
@@ -828,21 +819,18 @@ function ready (error, datapoints) {
 		.on('mouseover', function(d) {
 			d3.select('#tooltip').style('opacity', 1).text(d)
 		 })
-		 // on('mouseout', function() {
-		//	d3.select('#tooltip').style('opacity', 0)
-		//  })
+
 		.on('mouseover', function(d, i) {
 			console.log("mouseover on", this)
 			console.log("mouseover on", d.value)
 
-      // make the mouseover'd element
-      // bigger and red
+
 
 
 
 
       d3.select(this)
-		//.data(data)
+
         .transition()
         .duration(100)
         .attr('r', function(d) {
@@ -850,8 +838,7 @@ function ready (error, datapoints) {
 		})
         .attr('fill', function (d) {
 		return "url(#"+ d.name.replace(" ","-") +")"
-			//.attr('fill', function (d) {
-				//return "url(#elain)"
+
 		})
 
 
@@ -859,8 +846,7 @@ function ready (error, datapoints) {
 
     .on('mouseout', function(d, i) {
       console.log("mouseout", this);
-      // return the mouseover'd element
-      // to being smaller and black
+
 
       d3.select(this)
         .transition()
@@ -868,8 +854,7 @@ function ready (error, datapoints) {
         .attr('r', function(d) {
 			return radiusScale(d.value)
 		})
-		//poista kommentit, jos halutaan palauttaa sininenn pallura
-        //.attr('fill', 'lightblue');
+
     })
 
 	  
@@ -903,12 +888,12 @@ function vaihdaluku(color){
 	
 	dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.xk, yk: d.yk,value: d.onn,onn: d.onn,onnkvl: d.onnkvl,kaavio: d.kaavio} });
 	g.selectAll(".circle")
-	//testi() 
+
 
  }
 
  
-//})()
+
 
 
 
