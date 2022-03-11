@@ -881,22 +881,6 @@ testi()
 
 
 
-function vaihdaluku(color){
-	
-
-
-	
-	dataFilter = data.map(function(d){return {kuva: d.kuva, name: d.name, xk: d.xk, yk: d.yk,value: d.onn,onn: d.onn,onnkvl: d.onnkvl,kaavio: d.kaavio} });
-	g.selectAll(".circle")
-
-
- }
-
- 
-
-
-
-
 
 </script>
 </div>
