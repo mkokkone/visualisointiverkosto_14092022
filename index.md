@@ -593,10 +593,10 @@ function vaihdaluku(color){
 ## Kuvion toteutus käytännössä
 
 1. Pohjalla karttakuva
-<img src="kuvat\maakuunta700.png">
+<img src="kuvat\maakunta700.png">
 
 2. Karttakuvan pohjalta määritelty 700*700 px "koordinaatisto", johon sijoitettu maakuntien onnetomuusmääriä kuvaavat kuplat
-<img src="kuvat\maakuunta700_paikat.png">
+<img src="kuvat\maakunta700_paikat.png">
 
 3. Data tuotu tekstinä, datassa myös viittaukset hoveroitaessa esiin tuleviin eläinten kuviin ja kuvien alt-tekstit
 
