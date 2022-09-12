@@ -1,4 +1,4 @@
-# Viesti tehokkaasti 11.3.2021
+# Visualisointiverkosto 14.9.2022
 
 Tälle sivulle on koottu neljä esimerkkiä R:n eri paketeilla tehdyistä visualisoinneista aineistoineen 
 
@@ -126,4 +126,78 @@ theme(plot.title = element_text(size=16,hjust = 0.5))
 
 <img src="kuvat\kuva10.png">
 
+## 2. Sanapilvi (wordcloud2)
 
+
+#perusmuotoistaja: https://www.tarmo.fi/perusmuotoon/
+```
+sanat <- read.csv("C:/Users/Admin/OneDrive/sanapilvi_vertailu.csv", sep=";", encoding="latin1")
+sanat
+wordcloud2(data = sanat)
+
+wordcloud2(data = sanat,rotateRatio = 1,shape="circle")
+
+wordcloud2(data = sanat,rotateRatio = 1,shape="circle", color="blue")
+
+wordcloud2(data = sanat,rotateRatio = 1,shape="circle", color=rep_len( c("#0073b0","#b2b2b2","#8a8a9e","#000000","#c30045","#e21776","#9c1c36","#fd484e","#fecb00","#ea7404"), nrow(sanat)))
+
+wordcloud2(data = sanat,shape="diamond", color=rep_len( c("#0073b0","#b2b2b2","#8a8a9e","#000000","#c30045","#e21776","#9c1c36","#fd484e","#fecb00","#ea7404"), nrow(sanat)), minRotation = -pi/6, maxRotation = -pi/6, rotateRatio = 1)
+
+```
+https://cran.r-project.org/web/packages/wordcloud2/vignettes/wordcloud.html
+
+## 3. Sankey-kuvio (networkD3)
+```
+library(networkD3)
+
+# Load energy projection data
+URL <- "https://cdn.rawgit.com/christophergandrud/networkD3/master/JSONdata/energy.json"
+
+data <- read.csv("C:/Users/Admin/OneDrive/sankey_data.csv", sep=";", encoding="latin1")
+label <- read.csv("C:/Users/Admin/OneDrive/sankey_label.csv", sep=";", encoding="latin1")
+
+# Now we have 2 data frames: a 'links' data frame with 3 columns (from, to, value), and a 'nodes' data frame that gives the name of each node.
+head( data )
+head( label )
+
+head( Energy$links )
+head( Energy$nodes )
+
+# Thus we can plot it
+p <- sankeyNetwork(Links = data, Nodes = label, Source = "source",
+                   Target = "target", Value = "N", NodeID = "label",
+                   units = "N", fontSize = 12, nodeWidth = 30)
+p
+```
+## 4. Kalenterikuvio (calendR & openair)
+
+```
+library(calendR)
+
+# Data
+#set.seed(2)
+#data2 <- rnorm(365)
+
+data2 <- read.csv("C:/Users/Admin/OneDrive/julkaisukalenteri.csv", sep=";", encoding="latin1", header=FALSE)
+# Calendar
+calendR(year = 2022,
+        special.days = data2$V1,
+        gradient = TRUE,
+        low.col = "#FFFFED",
+        legend.pos = "bottom",
+
+        start="M",
+    
+        special.col = "#FF0000")
+
+
+library(openair)
+
+data(mydata)
+
+data3 <- read.csv("C:/Users/Admin/OneDrive/julkaisukalenteri2.csv", sep=";", encoding="latin1", header=TRUE)
+data3[['date']] <- as.POSIXct(strptime(data3[['date']],
+                                 format = "%m/%d/%Y %H:%M:%S"))
+# basic plot
+calendarPlot(data3, pollutant = "N", year = 2022, w.shift = 2)
+```
