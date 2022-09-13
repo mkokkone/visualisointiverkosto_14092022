@@ -128,23 +128,47 @@ theme(plot.title = element_text(size=16,hjust = 0.5))
 
 ## 2. Sanapilvi (wordcloud2)
 
+Sanapilven ainesto on kerätty Suomi maailman kärjessä -sivustolta, kopioimalla teksti Exceliin ja poistamalla tekstistä linkit. Tämän jälkeen teksti on käytetty [perusmuotoistajan](https://www.tarmo.fi/perusmuotoon/) läpi ja tämän jälkeen perustmuotoistajan tuloksena syntynyt aineisto on taulukoitu ja siihen on laskettu jokaisen yksittäisen sanan esiintymisten lukumäärä. Tuloksista on poistettu joitain yksittäisiä sanoja, kuten "olla"-verbit. 
 
-#perusmuotoistaja: https://www.tarmo.fi/perusmuotoon/
+Aineisto on tämä jälkeen tallennettu csv-tiedostoksi ja se on ladattavissa [täältä](https://mkokkone.github.io/visualisointiverkosto_14092022/sanapilvi_vertailu.csv). Lähtöaineisto näyttää seuraavanlaiselta:
+
 ```
-sanat <- read.csv("C:/Users/Admin/OneDrive/sanapilvi_vertailu.csv", sep=";", encoding="latin1")
-sanat
+word;freq
+toinen;25
+kolmas;20
+hyvä;18
+eniten;14
+Eurooppa;12
+kaupunki;12
+OECD-maa;10
+...
+
+Aineisto luetaan sisään read.csv-lauseella. Enkoodaus on ääkkösten takia "latin1".
+```
+sanat <- read.csv("/sanapilvi_vertailu.csv", sep=";", encoding="latin1")
+```
+Ladataan wordcloud2-paketti
+```
+library(wordcloud2)
+```
+Perus-sanapilvi voidaan tuottaa yksinkertaisesti seuraavalla tavalla:
+```
 wordcloud2(data = sanat)
-
-wordcloud2(data = sanat,rotateRatio = 1,shape="circle")
-
-wordcloud2(data = sanat,rotateRatio = 1,shape="circle", color="blue")
-
-wordcloud2(data = sanat,rotateRatio = 1,shape="circle", color=rep_len( c("#0073b0","#ea7404","#a40084","#8a8a9e","#253081","#049de3","#722ea5","#21a4a0","#O03d44","#fd484e"), nrow(sanat)))
-
-wordcloud2(data = sanat,shape="diamond", color=rep_len( c("#0073b0","#ea7404","#a40084","#8a8a9e","#253081","#049de3","#722ea5","#21a4a0","#O03d44","#fd484e"), nrow(sanat)), minRotation = -pi/6, maxRotation = -pi/6, rotateRatio = 1)
-
 ```
-https://cran.r-project.org/web/packages/wordcloud2/vignettes/wordcloud.html
+Sanoille on mahdollista määritellä joko yksi väri:
+```
+wordcloud2(data = sanat,rotateRatio = 1,shape="circle", color="blue")
+```
+Tai useampia kovakoodattuja värejä:
+```
+wordcloud2(data = sanat,rotateRatio = 1,shape="circle", color=rep_len( c("#0073b0","#ea7404","#a40084","#8a8a9e","#253081","#049de3","#722ea5","#21a4a0","#O03d44","#fd484e"), nrow(sanat)))
+```
+
+Muotoa ja sanojen suuntaa on myös mahdollista muuttaa
+```
+wordcloud2(data = sanat,shape="diamond", color=rep_len( c("#0073b0","#ea7404","#a40084","#8a8a9e","#253081","#049de3","#722ea5","#21a4a0","#O03d44","#fd484e"), nrow(sanat)), minRotation = -pi/6, maxRotation = -pi/6, rotateRatio = 1)
+```
+Paketin dokumentaatio löytyy [täältä](https://cran.r-project.org/web/packages/wordcloud2/vignettes/wordcloud.html)
 
 ## 3. Sankey-kuvio (networkD3)
 ```
