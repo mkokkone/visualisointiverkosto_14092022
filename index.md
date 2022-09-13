@@ -160,13 +160,13 @@ Sanoille on mahdollista määritellä joko yksi väri:
 ```
 wordcloud2(data = sanat,rotateRatio = 1,shape="circle", color="blue")
 ```
-<img src="kuvat\sanapilvi2.png">
+<img src="kuvat\Sanapilvi2.png">
 
 Tai useampia kovakoodattuja värejä:
 ```
 wordcloud2(data = sanat,rotateRatio = 1,shape="circle", color=rep_len( c("#0073b0","#ea7404","#a40084","#8a8a9e","#253081","#049de3","#722ea5","#21a4a0","#O03d44","#fd484e"), nrow(sanat)))
 ```
-<img src="kuvat\sanapilvi3.png">
+<img src="kuvat\Sanapilvi3.png">
 
 Muotoa ja sanojen suuntaa on myös mahdollista muuttaa
 ```
