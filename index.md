@@ -6,7 +6,7 @@ Tietoja on visualisoitu seuraavalla tavalla:
 1. Pylväsdiagrammi (ggplot2)
 2. Sanapilvi (wordcloud2)
 3. Sankey-kuvio (networkD3)
-4. Kalenterikuvio (calendR & openair)
+4. Kalenterikuvio (calendR)
 
 ## 1.  R Riistaonnettomuudet eläinlajeittain, maakunnittain ja kuukausittain
 
