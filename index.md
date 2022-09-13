@@ -8,7 +8,7 @@ Tietoja on visualisoitu seuraavalla tavalla:
 3. Sankey-kuvio (networkD3)
 4. Kalenterikuvio (calendR)
 
-## 1.  R Riistaonnettomuudet eläinlajeittain, maakunnittain ja kuukausittain
+## 1.  Riistaonnettomuudet eläinlajeittain, maakunnittain ja kuukausittain
 
 1. Ladataan pohjadataksi maakunnittainen riistaonnettomuusaineisto PX-Web-taulukosta. Ladataan tiedot eläinlajeittain, maakunnittian ja kuukasitasolla. Tallennetaan tiedot relaatiotiedostoon, jotta tietoja on helppo käsitellä seuraavassa vaiheessa. Jätetään yhteensä-luokat pois.
 <img src="kuvat\relaatiotiedosto2.png">
@@ -240,7 +240,7 @@ p
 
 Paketin dokumentaatio löytyy [täältä](https://cran.r-project.org/web/packages/networkD3/networkD3.pdf)
 
-## 4. Kalenterikuvio (calendR & openair)
+## 4. Kalenterikuvio (calendR)
 
 Kalenterikuvion aineisto on kerätty Tilastokeskuksen vuoden 2022 julkaisukalenterista päiväkohtaisesti sekä jo [julkaistujen tietojen](https://stat.fi/fi/julkaisut) että [tulevien julkaisujen](https://stat.fi/fi/tulevat-julkaisut) osalta. Tiedot kuukausittaisista suodatuksista Exceliin, jonka jälkeen päivämäärät on eroteltu muun tekstin joukosta ja julkaisujen päiväkohtainen lukumäärä on taulukoitu. Aineisto on tallennettu rivi-indeksin mukaisesti päiväkohtaisena summana csv-tiedostoon ja se näyttää seuraavanlaiselta:
 ```
