@@ -141,8 +141,7 @@ eniten;14
 Eurooppa;12
 kaupunki;12
 OECD-maa;10
-...
-
+```
 Aineisto luetaan sisään read.csv-lauseella. Enkoodaus on ääkkösten takia "latin1".
 ```
 sanat <- read.csv("/sanapilvi_vertailu.csv", sep=";", encoding="latin1")
