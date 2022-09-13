@@ -178,28 +178,63 @@ wordcloud2(data = sanat,shape="diamond", color=rep_len( c("#0073b0","#ea7404","#
 Paketin dokumentaatio löytyy [täältä](https://cran.r-project.org/web/packages/wordcloud2/vignettes/wordcloud.html)
 
 ## 3. Sankey-kuvio (networkD3)
+
+Sankey-kuvion aineistona käytetään muuttoliike-tilaston maahanmuutto ja maastamuutto -tietokantataulukkoa. Aineisto on ladattu maanosa ja maakunta -tasolla, jotta luokkia ei tule liikaa kuviota varten. Aineisto on käsitelty Excelissä ja aineistosta on muodostettu kaksi dataa eli ns. reitti -data, jossa on lähtöpaikan id ja määräpaikan id sekä muuttoliikkeen määrä ja data, jossa on lähtö- ja määräpaikan id:t ja muuttujien arvojen selitteet.
+
+Reitti-data näyttää seuraavanlaiselta:
+```
+source;target;N
+0;30;250
+1;30;22
+2;30;5
+3;30;10
+4;30;34
+5;30;5
+```
+
+Ja lähtö- ja määräpaikan sekä muuttujien arvojen liitteet sisältvä data seuraavanlaiselta:
+```
+label
+Uusimaa
+Varsinais-Suomi
+Satakunta
+Kanta-Häme
+Pirkanmaa
+Päijät-Häme
+```
+Aineistot yhdistetään source ja target-muuttujien arvolla ja selitedatan rivi-indeksillä. Huomaa että maanosilla on seliteet kahteen kertaan, koska määrämaanosilla on eri id kuin lähtömaanosilla.
+
+Ladataan aineistot csv-tiedostoina
 ```
 library(networkD3)
-
-# Load energy projection data
-URL <- "https://cdn.rawgit.com/christophergandrud/networkD3/master/JSONdata/energy.json"
-
-data <- read.csv("C:/Users/Admin/OneDrive/sankey_data.csv", sep=";", encoding="latin1")
-label <- read.csv("C:/Users/Admin/OneDrive/sankey_label.csv", sep=";", encoding="latin1")
-
-# Now we have 2 data frames: a 'links' data frame with 3 columns (from, to, value), and a 'nodes' data frame that gives the name of each node.
-head( data )
-head( label )
-
-head( Energy$links )
-head( Energy$nodes )
-
-# Thus we can plot it
+data <- read.csv("G:/visualisointiverkosto/R/sankey_data.csv", sep=";", encoding="latin1")
+label <- read.csv("G:/visualisointiverkosto/R/sankey_label.csv", sep=";", encoding="latin1")
+```
+Kuvio voidaan muodostaa suoraan, koska aineisto on käsitelty jo edellisessä vaiheessa
+```
 p <- sankeyNetwork(Links = data, Nodes = label, Source = "source",
                    Target = "target", Value = "N", NodeID = "label",
                    units = "N", fontSize = 12, nodeWidth = 30)
 p
 ```
+<img src="kuvat\sankey1.png">
+
+Lisätään kuvioon vielä halutut värit määrittelemällä ne ennen kuvion muodostusta ja lisäämällä ne kuvioon colourScale-lauseella.
+
+```
+
+colorJS <- paste('d3.scaleOrdinal(["#0073b0","#ea7404",	"#a40084","#8a8a9e","#253081","#049de3","#722ea5","#21a4a0","#O03d44","#fd484e","#b2b2b2","#000000","#c30045","#e21776","#9c1c36","#f8941e","#fecb00","#c0d730","#7ab800","#00833e","#003d44","#51312d"])')
+
+p <- sankeyNetwork(Links = data, Nodes = label, Source = "source",
+                   Target = "target", Value = "N", NodeID = "label",
+                   units = "N", fontSize = 12, nodeWidth = 30,
+                   colourScale = colorJS)
+
+p
+
+```
+<img src="kuvat\sankey2.png">
+
 ## 4. Kalenterikuvio (calendR & openair)
 
 ```
