@@ -181,7 +181,7 @@ Paketin dokumentaatio löytyy [täältä](https://cran.r-project.org/web/package
 
 Sankey-kuvion aineistona käytetään muuttoliike-tilaston maahanmuutto ja maastamuutto -tietokantataulukkoa. Aineisto on ladattu maanosa ja maakunta -tasolla, jotta luokkia ei tule liikaa kuviota varten. Aineisto on käsitelty Excelissä ja aineistosta on muodostettu kaksi dataa eli ns. reitti -data, jossa on lähtöpaikan id ja määräpaikan id sekä muuttoliikkeen määrä ja data, jossa on lähtö- ja määräpaikan id:t ja muuttujien arvojen selitteet.
 
-Reitti-data näyttää seuraavanlaiselta:
+Reitti-data näyttää seuraavanlaiselta ja se on ladattavissa [täältä](https://mkokkone.github.io/visualisointiverkosto_14092022/sankey_data.csv)::
 ```
 source;target;N
 0;30;250
@@ -192,7 +192,7 @@ source;target;N
 5;30;5
 ```
 
-Ja lähtö- ja määräpaikan sekä muuttujien arvojen liitteet sisältvä data seuraavanlaiselta:
+Ja lähtö- ja määräpaikan sekä muuttujien arvojen liitteet sisältvä data seuraavanlaiselta ja se on ladattavissa [täältä](https://mkokkone.github.io/visualisointiverkosto_14092022/sankey_label.csv):
 ```
 label
 Uusimaa
@@ -202,6 +202,9 @@ Kanta-Häme
 Pirkanmaa
 Päijät-Häme
 ```
+Aineisto ovat ladattavissa [täältä](https://mkokkone.github.io/visualisointiverkosto_14092022/sanapilvi_vertailu.csv)
+
+
 Aineistot yhdistetään source ja target-muuttujien arvolla ja selitedatan rivi-indeksillä. Huomaa että maanosilla on seliteet kahteen kertaan, koska määrämaanosilla on eri id kuin lähtömaanosilla.
 
 Ladataan aineistot csv-tiedostoina
@@ -235,35 +238,88 @@ p
 ```
 <img src="kuvat\sankey2.png">
 
+Paketin dokumentaatio löytyy [täältä](https://cran.r-project.org/web/packages/networkD3/networkD3.pdf)
+
 ## 4. Kalenterikuvio (calendR & openair)
 
+Kalenterikuvion aineisto on kerätty Tilastokeskuksen vuoden 2022 julkaisukalenterista päiväkohtaisesti sekä jo [julkaistujen tietojen](https://stat.fi/fi/julkaisut) että [tulevien julkaisujen](https://stat.fi/fi/tulevat-julkaisut) osalta. Tiedot kuukausittaisista suodatuksista Exceliin, jonka jälkeen päivämäärät on eroteltu muun tekstin joukosta ja julkaisujen päiväkohtainen lukumäärä on taulukoitu. Aineisto on tallennettu rivi-indeksin mukaisesti päiväkohtaisena summana csv-tiedostoon ja se näyttää seuraavanlaiselta:
+```
+0
+0
+0
+0
+1
+0
+0
+0
+0
+4
+0
+2
+```
+Ladataan calendR-paketti ja haetaan csv-tiedosto R:ään ilman sarakeotsikoita.
 ```
 library(calendR)
 
-# Data
-#set.seed(2)
-#data2 <- rnorm(365)
 
-data2 <- read.csv("C:/Users/Admin/OneDrive/julkaisukalenteri.csv", sep=";", encoding="latin1", header=FALSE)
-# Calendar
+data2 <- read.csv("G:/visualisointiverkosto/R/julkaisukalenteri.csv", sep=";", header=FALSE)
+
+```
+Luodaan kalenteri-kuvio ladatusta aineistosta. Special.days-osoittaa päivät, joille halutaan visualisoida julkaisujen kokonaismäärä
+```
 calendR(year = 2022,
         special.days = data2$V1,
         gradient = TRUE,
         low.col = "#FFFFED",
-        legend.pos = "bottom",
 
-        start="M",
-    
-        special.col = "#FF0000")
+        
+        special.col = "#ea7404")
 
-
-library(openair)
-
-data(mydata)
-
-data3 <- read.csv("C:/Users/Admin/OneDrive/julkaisukalenteri2.csv", sep=";", encoding="latin1", header=TRUE)
-data3[['date']] <- as.POSIXct(strptime(data3[['date']],
-                                 format = "%m/%d/%Y %H:%M:%S"))
-# basic plot
-calendarPlot(data3, pollutant = "N", year = 2022, w.shift = 2)
 ```
+<img src="kuvat\kalenteri1.png">
+
+Muutetaan viikko alkamaan maanantaista ja samalla voidaan muuttaa värejä eli päivät, joilla on 0-julkaisua muutetaan valkoisiksi.
+```
+calendR(year = 2022,
+        special.days = data2$V1,
+        gradient = TRUE,
+        low.col = "white",
+        legend.pos = "right",
+        
+        start="M",
+              
+        special.col = "#ea7404")
+```
+<img src="kuvat\kalenteri2.png">
+
+Asetetaan kuviolle otsikko ja muutetaan korostusväriä.
+```
+calendR(year = 2022,
+        special.days = data2$V1,
+        gradient = TRUE,
+        low.col = "white",
+        legend.pos = "right",
+        
+        start="M",
+        title  = "Julkaisujen määrä päivää kohti, vuosi 2022",
+        special.col = "#0073b0")
+
+```
+<img src="kuvat\kalenteri3.png">
+
+Tallennetaan kuvio PDF-tiedostoksi. Kuvio löytyy R:n working directorystä, jonka sijainnin voi tarkistaa kirjoittamalla "getwd()" -konsoliin.
+```
+
+calendR(year = 2022,
+        special.days = data2$V1,
+        gradient = TRUE,
+        low.col = "white",
+        legend.pos = "right",
+        
+        start="M",
+        title  = "Julkaisujen määrä päivää kohti, vuosi 2022",
+        special.col = "#0073b0",
+
+        pdf = TRUE)
+```
+Paketin dokumentaatio löytyy [täältä](https://cran.r-project.org/web/packages/networkD3/networkD3.pdf)](https://r-coder.com/calendar-plot-r/)
