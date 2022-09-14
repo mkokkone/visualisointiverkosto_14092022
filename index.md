@@ -262,7 +262,7 @@ Ladataan calendR-paketti ja haetaan csv-tiedosto R:ään ilman sarakeotsikoita.
 library(calendR)
 
 
-data2 <- read.csv("G:/visualisointiverkosto/R/julkaisukalenteri.csv", sep=";", header=FALSE)
+data2 <- read.csv("/julkaisukalenteri.csv", sep=";", header=FALSE)
 
 ```
 Luodaan kalenteri-kuvio ladatusta aineistosta. Special.days-osoittaa päivät, joille halutaan visualisoida julkaisujen kokonaismäärä
