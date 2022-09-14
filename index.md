@@ -210,8 +210,8 @@ Aineistot yhdistetään source ja target-muuttujien arvolla ja selitedatan rivi-
 Ladataan aineistot csv-tiedostoina
 ```
 library(networkD3)
-data <- read.csv("G:/visualisointiverkosto/R/sankey_data.csv", sep=";", encoding="latin1")
-label <- read.csv("G:/visualisointiverkosto/R/sankey_label.csv", sep=";", encoding="latin1")
+data <- read.csv("/sankey_data.csv", sep=";", encoding="latin1")
+label <- read.csv("/sankey_label.csv", sep=";", encoding="latin1")
 ```
 Kuvio voidaan muodostaa suoraan, koska aineisto on käsitelty jo edellisessä vaiheessa
 ```
