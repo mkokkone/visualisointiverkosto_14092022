@@ -1,6 +1,16 @@
-<html>
-  <head>
-    <title>Stack Overflow - Calendar Heatmap</title>
+---
+YAML front matter
+---
+
+---
+layout: page
+title: About
+
+---
+
+<body>
+ <meta charset="utf-8">
+
     <style>
       .body {
         height: 97%;
