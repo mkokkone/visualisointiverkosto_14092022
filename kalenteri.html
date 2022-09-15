@@ -1,0 +1,230 @@
+<html>
+  <head>
+    <title>Stack Overflow - Calendar Heatmap</title>
+    <style>
+      .body {
+        height: 97%;
+      }
+
+      svg {
+        height: 1800;
+        width: 97%;
+      }
+div.tooltip {
+  color: white;
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 28px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: rgba(0,0,0,.8);
+  border: 2px solid black;
+  pointer-events: none;
+}
+    </style>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-color/1.2.1/d3-color.js"></script>
+  </head>
+  <body>
+    <h2>Päivittäiset julkaisumäärät</h2>
+    <h4></h4>
+    <svg id="svg"></svg>
+    <script>
+	
+	d3.csv("https://mkokkone.github.io/visualisointiverkosto_14092022/calendar.csv").then(function(flatData) {
+	//var parseDate = d3.timeFormat("%m/%d/%Y");
+  // assign null correctly
+	flatData.forEach(function(d) {
+    d.AnswerCount = parseInt(d.AnswerCount);
+	//d.Date = parseDate(d.Date);
+	});
+      flatData.sort((a, b) => new Date(a.Date) - new Date(b.Date) );	
+
+      const dateValues = flatData.map(d => ({
+        date: d3.timeDay(new Date(d.Date)),
+        value: Number(d.AnswerCount)
+      }));
+	  
+      const svg = d3.select("#svg");
+      const { width, height } = document
+        .getElementById("svg")
+        .getBoundingClientRect();
+
+
+      function draw() {
+        const years = d3
+          .nest()
+          .key(d => d.date.getFullYear())
+          .entries(dateValues)
+          .reverse();
+
+        const values = dateValues.map(c => c.value);
+        const maxValue = d3.max(values);
+        const minValue = d3.min(values);
+
+        const cellSize = 30;
+        const yearHeight = cellSize * 7;
+
+        const group = svg.append("g");
+
+        const year = group
+          .selectAll("g")
+          .data(years)
+          .join("g")
+          .attr(
+            "transform",
+            (d, i) => `translate(50, ${yearHeight * i + cellSize * 1.5})`
+          );
+
+		// Define the div for the tooltip
+		const div = d3
+		.select('body')
+		.append('div')
+		.attr('class', 'tooltip')
+		.style('opacity', 0);
+
+
+
+	
+
+        year
+          .append("text")
+          .attr("x", -5)
+          .attr("y", -30)
+          .attr("text-anchor", "end")
+          .attr("font-size", 16)
+          .attr("font-weight", 550)
+          .attr("transform", "rotate(270)")
+          .text(d => d.key);
+
+        const formatDay = d =>
+          ["Ma", "Ti", "Ke", "To", "Pe", "La", "Su"][d.getUTCDay()];
+		
+        const countDay = d => d.getUTCDay();
+        const timeWeek = d3.utcSunday;
+        const formatDate = d3.utcFormat("%x");
+        const colorFn = d3
+          .scaleSequential(d3.interpolateBuGn)
+          .domain([Math.floor(minValue), Math.ceil(maxValue)*2]);
+        const format = d3.format("+.2%");
+		
+		
+        
+		year
+          .append("g")
+          .attr("text-anchor", "end")
+          .selectAll("text")
+          .data(d3.range(7).map(i => new Date(2022, 0, i)))
+          .join("text")
+          .attr("x", -5)
+          .attr("y", d => (countDay(d) + 0.5) * cellSize)
+          .attr("dy", "0.31em")
+          .attr("font-size", 12)
+          .text(formatDay);
+
+        year
+          .append("g")
+          .selectAll("rect")
+          .data(d => d.values)
+          .join("rect")
+          .attr("width", cellSize - 1.5)
+          .attr("height", cellSize - 1.5)
+          .attr(
+            "x",
+            (d, i) => timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 10
+          )
+          .attr("y", d => countDay(d.date) * cellSize + 0.5)
+          .attr("fill", d => colorFn(d.value))
+          .append("title")
+          .text(d => `${(d.date)}: ${d.value.toFixed(0)}`)
+		  .style('cursor', 'pointer')
+		      .on('mouseover', d => {
+      div
+        .transition()
+        .duration(200)
+        .style('opacity', 0.9);
+      div
+        .html(formatTime(d.date) + '<br/>' + d.close)
+        .style('left', d3.event.pageX + 'px')
+        .style('top', d3.event.pageY - 28 + 'px');
+    })
+    .on('mouseout', () => {
+      div
+        .transition()
+        .duration(500)
+        .style('opacity', 0);
+    });
+		  
+
+        year
+		.append("g")
+          .selectAll("text")
+          .data(d => d.values)
+          .join("text")
+          
+
+          
+          
+		  .attr("x",(d, i) => timeWeek.count(d3.utcYear(d.date), d.date) * cellSize + 15)
+		  .attr("y", d => (countDay(d.date) + 0.65) * cellSize)
+          .attr("text-anchor", "start")
+          .attr("font-size", 20)
+          .text(d => `${d.value.toFixed(0)}`);
+		
+		
+
+
+
+        const legend = group
+          .append("g")
+          .attr(
+            "transform",
+            `translate(10, ${years.length * yearHeight + cellSize * 4})`
+          );
+
+        const categoriesCount = 14;
+        const categories = [...Array(categoriesCount)].map((_, i) => {
+          const upperBound = (maxValue / categoriesCount) * (i+1);
+          const lowerBound = (maxValue / categoriesCount) * i;
+
+          return {
+            upperBound,
+            lowerBound,
+            color: d3.interpolateBuGn(upperBound / (maxValue*2)),
+            selected: true
+          };
+        });
+
+        const legendWidth = 60;
+
+        function toggle(legend) {
+          const { lowerBound, upperBound, selected } = legend;
+
+          legend.selected = !selected;
+
+          const highlightedDates = years.map(y => ({
+            key: y.key,
+            values: y.values.filter(
+              v => v.value > lowerBound && v.value <= upperBound
+            )
+          }));
+
+          year
+            .data(highlightedDates)
+            .selectAll("rect")
+            .data(d => d.values, d => d.date)
+            .transition()
+            .duration(500)
+            .attr("fill", d => (legend.selected ? colorFn(d.value) : "white"));
+        }
+
+       
+      }
+	
+      draw();
+	  });
+    </script>
+  </body>
+</html>
