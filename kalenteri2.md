@@ -11,7 +11,7 @@ title: About
 <body>
  <meta charset="utf-8">
 
-    <style>
+ <style>
       .body {
         height: 97%;
       }
@@ -20,14 +20,15 @@ title: About
         height: 1800;
         width: 97%;
       }
-div.tooltip {
+	  
+	  div.tooltip {
   color: white;
   position: absolute;
   text-align: center;
-  width: 60px;
-  height: 28px;
-  padding: 2px;
-  font: 12px sans-serif;
+  width: 160px;
+  height: 56px;
+  padding: 4px;
+  font: 20px sans-serif;
   background: rgba(0,0,0,.8);
   border: 2px solid black;
   pointer-events: none;
@@ -38,8 +39,8 @@ div.tooltip {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-color/1.2.1/d3-color.js"></script>
   </head>
   <body>
-    <h2>Päivittäiset julkaisumäärät</h2>
-    <h4></h4>
+    <h1>Päivittäiset julkaisumäärät</h1>
+    <h3>Liikuttamalla hiirtä alla olevan kalenterinäkymän alla voit katsoa montako julkaisua on julkaistu ja suunniteltu julkaistavaksi kunakin viikonpäivänä vuonna 2022</h3>
     <svg id="svg"></svg>
     <script>
 	
@@ -57,6 +58,14 @@ div.tooltip {
         value: Number(d.AnswerCount)
       }));
 	  
+	  		// Define the div for the tooltip
+		const div = d3
+	  .select('body')
+	  .append('div')
+	  .attr('class', 'tooltip')
+	  .style('opacity', 0);
+		
+	  const formatTime = d3.timeFormat('%d.%m.%Y');
       const svg = d3.select("#svg");
       const { width, height } = document
         .getElementById("svg")
@@ -74,7 +83,7 @@ div.tooltip {
         const maxValue = d3.max(values);
         const minValue = d3.min(values);
 
-        const cellSize = 30;
+        const cellSize = 35;
         const yearHeight = cellSize * 7;
 
         const group = svg.append("g");
@@ -87,17 +96,6 @@ div.tooltip {
             "transform",
             (d, i) => `translate(50, ${yearHeight * i + cellSize * 1.5})`
           );
-
-		// Define the div for the tooltip
-		const div = d3
-		.select('body')
-		.append('div')
-		.attr('class', 'tooltip')
-		.style('opacity', 0);
-
-
-
-	
 
         year
           .append("text")
@@ -119,8 +117,7 @@ div.tooltip {
           .scaleSequential(d3.interpolateBuGn)
           .domain([Math.floor(minValue), Math.ceil(maxValue)*2]);
         const format = d3.format("+.2%");
-		
-		
+
         
 		year
           .append("g")
@@ -147,16 +144,16 @@ div.tooltip {
           )
           .attr("y", d => countDay(d.date) * cellSize + 0.5)
           .attr("fill", d => colorFn(d.value))
-          .append("title")
-          .text(d => `${(d.date)}: ${d.value.toFixed(0)}`)
-		  .style('cursor', 'pointer')
+          //.append("title")
+          //.text(d => `${(d.date)}: ${d.value.toFixed(0)}`);
+		  
 		      .on('mouseover', d => {
       div
         .transition()
         .duration(200)
         .style('opacity', 0.9);
       div
-        .html(formatTime(d.date) + '<br/>' + d.close)
+        .html(formatDay(d.date)+ " " + formatTime(d.date) + '<br/>' + "Julkaisuja: "+ d.value)
         .style('left', d3.event.pageX + 'px')
         .style('top', d3.event.pageY - 28 + 'px');
     })
@@ -237,4 +234,3 @@ div.tooltip {
 	  });
     </script>
   </body>
-
